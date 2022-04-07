@@ -67,7 +67,7 @@ ff_style <- function(){
     panel.background = ggplot2::element_blank(),
 
     #Strip background (This sets the panel background for facet-wrapped plots to white, removing the standard grey ggplot background colour and sets the title size of the facet-wrap title to font size 22)
-    strip.background = ggplot2::element_rect(fill="white"),
+    strip.background = ggplot2::element_rect(fill="#FFFFFF"),
     strip.text = ggplot2::element_text(size = 12, hjust = 0)
   )
 }

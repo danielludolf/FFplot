@@ -45,10 +45,12 @@ ff_ggplot <- function(plot_name, source_name){
 
   #Draw your left-aligned grid
   plot_left_aligned <- left_align(plot_name, c("subtitle", "title", "caption"))
-  plot_grid <- ggpubr::ggarrange(plot_left_aligned, footer,
-                                 ncol = 1, nrow = 2,
-                                 heights = c(0.6, 0.045/(550/450)))
-  plot_grid
+  ggpubr::ggarrange(plot_left_aligned,
+                    footer,
+                    ncol = 1,
+                    nrow = 2,
+                    heights = c(0.6, 0.045/(550/450)))
+
 }
 
 #' Create Forsyth Futures' themed plotly graph
@@ -77,6 +79,7 @@ ff_ggplotly <- function(plot_name, source_name){
 
   message("Do not use ff_style() before ff_ggplotly()")
 
+  # TEMP should the user be able to edit the width and height?
   plotly::ggplotly(plot_name, tooltip = "text", width = 750, height = 550) %>%
     # remove plotly logo in the top right-hand corner and other unneeded buttons
     plotly::config(displaylogo = FALSE, modeBarButtonsToRemove = c("lasso2d", "zoom2d", "pan2d", "select2d", "hoverClosestCartesian", "hoverCompareCartesian")) %>%
