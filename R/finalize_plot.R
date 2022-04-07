@@ -60,6 +60,7 @@ ff_ggplotly <- function(ggplot_name){
   plotly::ggplotly(ggplot_name, tooltip = "text", width = 750, height = 550) %>%
     # remove plotly logo in the top right-hand corner
     # TODO removed unneeded features on modebar
+    # TODO add source name
     plotly::config(displaylogo = FALSE) %>%
     plotly::layout(margin = list(b = 90, t = 100),
                    yaxis = list(title = list(standoff = 20L), ticks = ""),
