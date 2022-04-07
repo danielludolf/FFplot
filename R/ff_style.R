@@ -72,3 +72,15 @@ ff_style <- function(){
     strip.text = ggplot2::element_text(size = 12, hjust = 0)
   )
 }
+
+#' Add Forsyth Futures' color palette
+#'
+#' Vector of Forsyth Futures' color palette
+#' @keywords ff_colors
+#' @export
+
+ff_colors <- c('#85cae4','#9cd4ee','#83b2c8','#6a91a2','#415862','#004c89','#3176ce','#205391','#163e6b','#0c2946',
+               '#00043e','#000947','#000531','#00968a','#66dfd0','#47a096','#357a72','#23544f','#8bb185','#d2fbc4',
+               '#9dbc93','#7d9575','#5d7057','#ffc13d','#ddaf4f','#b89242','#7a602b','#3e3115','#f38538','#cc7b42',
+               '#a86536','#6c4123','#311d0e','#00000c','#8c8c8c','#4c4c4c','#333333','#000000','#888887','#d4d4d3',
+               '#959594','#6e6e6e','#484848')
