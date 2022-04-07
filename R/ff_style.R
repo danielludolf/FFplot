@@ -1,6 +1,6 @@
 #' Add Forsyth Futures' theme to ggplot chart
 #'
-#' This function allows you to add the Forsyth Futures' theme to your ggplotgraphics.
+#' This function allows you to add the Forsyth Futures' theme to your ggplot graphics.
 #' @keywords ff_style
 #' @export
 #' @examples
@@ -16,7 +16,6 @@ ff_style <- function(){
   font <- "sans"
 
   ggplot2::theme(
-
     #Text format:
     #This sets the font, size, type and colour of text for the chart's title
     plot.title = ggplot2::element_text(family=font,
@@ -73,7 +72,7 @@ ff_style <- function(){
   )
 }
 
-#' Add Forsyth Futures' color palette
+#' Forsyth Futures' color palette
 #'
 #' Vector of Forsyth Futures' color palette
 #' @keywords ff_colors

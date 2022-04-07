@@ -1,5 +1,5 @@
 
-#Left align text
+# left align text
 left_align <- function(plot_name, pieces){
   grob <- ggplot2::ggplotGrob(plot_name)
   n <- length(pieces)
@@ -7,25 +7,37 @@ left_align <- function(plot_name, pieces){
   return(grob)
 }
 
+# function that allows for Forsyth Futures logo to be added in the bottom right corner of plots
 create_footer <- function(source_name){
   #Make the footer
-  footer <- grid::grobTree(# grid::linesGrob(x = grid::unit(c(0, 1), "npc"), y = grid::unit(1.1, "npc")),
+  footer <- grid::grobTree(# add horizontal line between plot and logo/source
+                           # grid::linesGrob(x = grid::unit(c(0, 1), "npc"), y = grid::unit(1.1, "npc")),
+                           # adds source name in bottom left corner
                            grid::textGrob(source_name,
-                                          x = 0.004, hjust = 0, gp = grid::gpar(fontsize=8)),
-                           grid::rasterGrob(as.raster(magick::image_read('https://raw.githubusercontent.com/forsythfuture/FFTemplates/main/inst/rmarkdown/templates/data_request_template/skeleton/logo.png')), x = 0.944))
+                                          x = 0.004,
+                                          hjust = 0,
+                                          gp = grid::gpar(fontsize=8)),
+                           # adds Forsyth Futures logo in the bottom right
+                           grid::rasterGrob(as.raster(magick::image_read('https://raw.githubusercontent.com/forsythfuture/FFTemplates/main/inst/rmarkdown/templates/data_request_template/skeleton/logo.png')),
+                                            x = 0.944)
+                           )
   return(footer)
 }
 
-#' Arrange alignment and create Forsyth Futures ggplot chart
+#' Create Forsyth Futures' themed ggplot graph
 #'
-#' It will left align your title, subtitle and source, add the Forsyth Futures blocks at the bottom right and save it to your specified location.
-#' @param plot_name The variable name of the plot you have created that you want to format and save
-#' @param source_name The text you want to come after the text 'Source:' in the bottom left hand side of your side
+#' This function allows you to create a static ggplot graph with Forsyth Futures' theming.
+#' @param plot_name The object name of the plot you have created that you want to format
+#' @param source_name The text you want to come after the text 'Source:' in the bottom left hand side of your plot
 
 #' @keywords ff_ggplot
 #' @export
 #' @examples
-#' ff_ggplot(plot_name = myplot, source = "The source for my data")
+#' p <- ggplot2::ggplot(mtcars, ggplot2::aes(wt, mpg)) +
+#'   ggplot2::geom_point() +
+#'   ggplot2::labs(title = "Fuel economy declines as weight increases",
+#'                 subtitle = "Fuel economy declines as weight increases")
+#' ff_ggplot(plot_name = p, source = "The source for my data")
 
 ff_ggplot <- function(plot_name, source_name){
 
@@ -39,26 +51,33 @@ ff_ggplot <- function(plot_name, source_name){
   plot_grid
 }
 
-#' Add Forsyth Futures' theme to plotly chart
+#' Create Forsyth Futures' themed plotly graph
 #'
-#' This function allows you to convert a ggplot plot into an interactive plotlygraphic with Forsyth Futures' theming.
+#' This function allows you to convert a ggplot graph into an interactive plotly graphic with Forsyth Futures' theming.
+#' @param plot_name The object name of the plot you have created that you want to format
+#' @param source_name The text you want to come after the text 'Source:' in the bottom left hand side of your plot
+
 #' @keywords ff_ggplotly
 #' @export
 #' @importFrom magrittr "%>%"
 #' @examples
 #' p <- ggplot2::ggplot(mtcars, ggplot2::aes(wt, mpg)) +
-#'   ggplot2::geom_point(ggplot2::aes(text = paste0(
-#'     "wt: ", wt, "<br>",
-#'     "mpg: ", mpg, "<br>"))) +
+#'   ggplot2::geom_point(
+#'    ggplot2::aes(
+#'     text = paste0(
+#'       "wt: ", wt, "<br>",
+#'       "mpg: ", mpg, "<br>")
+#'     )
+#'   ) +
 #'   ggplot2::labs(title = "Fuel economy declines as weight increases",
 #'                 subtitle = "Fuel economy declines as weight increases")
-#' ff_ggplotly(ggplot_name = p, source = "The source for my data")
+#' ff_ggplotly(plot_name = p, source = "The source for my data")
 
-ff_ggplotly <- function(ggplot_name, source_name){
+ff_ggplotly <- function(plot_name, source_name){
 
   message("Do not use ff_style() before ff_ggplotly()")
 
-  plotly::ggplotly(ggplot_name, tooltip = "text", width = 750, height = 550) %>%
+  plotly::ggplotly(plot_name, tooltip = "text", width = 750, height = 550) %>%
     # remove plotly logo in the top right-hand corner and other unneeded buttons
     plotly::config(displaylogo = FALSE, modeBarButtonsToRemove = c("lasso2d", "zoom2d", "pan2d", "select2d", "hoverClosestCartesian", "hoverCompareCartesian")) %>%
     plotly::layout(margin = list(b = 90, t = 100),
