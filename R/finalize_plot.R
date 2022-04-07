@@ -44,6 +44,7 @@ ff_ggplot <- function(plot_name, source_name){
 #' This function allows you to convert a ggplot plot into an interactive plotlygraphic with Forsyth Futures' theming.
 #' @keywords ff_ggplotly
 #' @export
+#' @importFrom magrittr "%>%"
 #' @examples
 #' p <- ggplot2::ggplot(mtcars, ggplot2::aes(wt, mpg)) +
 #'   ggplot2::geom_point(ggplot2::aes(text = paste0(
@@ -51,22 +52,20 @@ ff_ggplot <- function(plot_name, source_name){
 #'     "mpg: ", mpg, "<br>"))) +
 #'   ggplot2::labs(title = "Fuel economy declines as weight increases",
 #'                 subtitle = "Fuel economy declines as weight increases")
-#' ff_ggplotly(ggplot_name = p)
+#' ff_ggplotly(ggplot_name = p, source = "The source for my data")
 
-ff_ggplotly <- function(ggplot_name){
+ff_ggplotly <- function(ggplot_name, source_name){
 
   message("Do not use ff_style() before ff_ggplotly()")
 
   plotly::ggplotly(ggplot_name, tooltip = "text", width = 750, height = 550) %>%
-    # remove plotly logo in the top right-hand corner
-    # TODO removed unneeded features on modebar
-    # TODO add source name
-    plotly::config(displaylogo = FALSE) %>%
+    # remove plotly logo in the top right-hand corner and other unneeded buttons
+    plotly::config(displaylogo = FALSE, modeBarButtonsToRemove = c("lasso2d", "zoom2d", "pan2d", "select2d", "hoverClosestCartesian", "hoverCompareCartesian")) %>%
     plotly::layout(margin = list(b = 90, t = 100),
                    yaxis = list(title = list(standoff = 20L), ticks = ""),
                    xaxis = list(title = list(standoff = 20L), ticks = ""),
                    font = list(family = "Helvetica"),
-                   modebar = list(orientation = "v"),
+                   modebar = list(orientation = "h"),
                    plot_bgcolor = '#FFFFFF',
                    paper_bgcolor = '#FFFFFF',
                    images = list(
@@ -80,6 +79,18 @@ ff_ggplotly <- function(ggplot_name){
                        sizey = 0.15,
                        xanchor="right",
                        yanchor="bottom")
-                     )
+                     ),
+                   annotations =
+                     list(
+                       x = 0,
+                       y = -0.18,
+                       text = paste0("Source: ", source_name),
+                       showarrow = F,
+                       xref='paper',
+                       yref='paper',
+                       align='left',
+                       xanchor='left',
+                       yanchor='auto',
+                       font=list(size=9, color="#00000c"))
                   )
 }
