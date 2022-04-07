@@ -90,7 +90,7 @@ ff_ggplotly <- function(ggplot_name, source_name){
                        yref='paper',
                        align='left',
                        xanchor='left',
-                       yanchor='auto',
+                       yanchor='bottom',
                        font=list(size=9, color="#00000c"))
                   )
 }
