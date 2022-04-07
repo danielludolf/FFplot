@@ -54,7 +54,7 @@ ff_ggplot <- function(plot_name, source_name){
 #'     "mpg: ", mpg, "<br>"))) +
 #'   ggplot2::labs(title = "Fuel economy declines as weight increases",
 #'                 subtitle = "Fuel economy declines as weight increases")
-#' ff_ggplotly(p)
+#' ff_ggplotly(ggplot_name = p)
 
 ff_ggplotly <- function(ggplot_name){
 
