@@ -75,7 +75,7 @@ ff_static <- function(){
 
 #' Add Forsyth Futures' theme to plotly chart
 #'
-#' This function allows you to add the Forsyth Futures' theming to your plotlygraphics.
+#' This function allows you to convert a ggplot plot into an interactive plotlygraphic with Forsyth Futures' theming.
 #' @keywords ff_interactive
 #' @export
 #' @examples
