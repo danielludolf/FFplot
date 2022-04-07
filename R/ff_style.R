@@ -1,16 +1,16 @@
 #' Add Forsyth Futures' theme to ggplot chart
 #'
 #' This function allows you to add the Forsyth Futures' theme to your ggplotgraphics.
-#' @keywords ff_static
+#' @keywords ff_style
 #' @export
 #' @examples
 #' ggplot2::ggplot(mtcars, ggplot2::aes(wt, mpg)) +
 #'  ggplot2::geom_point() +
 #'  ggplot2::labs(title = "Fuel economy declines as weight increases",
 #'                subtitle = "Fuel economy declines as weight increases") +
-#'  ff_static()
+#'  ff_style()
 
-ff_static <- function(){
+ff_style <- function(){
 
   # this is the same as Helvetica font
   font <- "sans"
@@ -71,44 +71,4 @@ ff_static <- function(){
     strip.background = ggplot2::element_rect(fill="white"),
     strip.text = ggplot2::element_text(size = 12, hjust = 0)
   )
-}
-
-#' Add Forsyth Futures' theme to plotly chart
-#'
-#' This function allows you to convert a ggplot plot into an interactive plotlygraphic with Forsyth Futures' theming.
-#' @keywords ff_interactive
-#' @export
-#' @examples
-#' p <- ggplot2::ggplot(mtcars, ggplot2::aes(wt, mpg)) +
-#'  ggplot2::geom_point() +
-#'  ggplot2::labs(title = "Fuel economy declines as weight increases",
-#'                subtitle = "Fuel economy declines as weight increases") +
-#' ff_interactive(p)
-
-ff_interactive <- function(plot){
-
- message("Do not use ff_static() before ff_interactive()")
-
- plotly::ggplotly(plot, tooltip = "text", width = 750, height = 550) %>%
-   # remove plotly logo in the top right-hand corner
-   # TODO removed unneeded features on modebar
-   plotly::config(displaylogo = FALSE) %>%
-   plotly::layout(margin = list(b = 90, t = 100),
-                  yaxis = list(title = list(standoff = 20L), ticks = ""),
-                  xaxis = list(title = list(standoff = 20L), ticks = ""),
-                  font = list(family = "Helvetica"),
-                  modebar = list(orientation = "v"),
-                  images = list(
-                    list(
-                      source = "https://raw.githubusercontent.com/forsythfuture/FFTemplates/main/inst/rmarkdown/templates/data_request_template/skeleton/logo.png",
-                      xref = "paper",
-                      yref = "paper",
-                      x = 1,
-                      y = -0.2,
-                      sizex = 0.15,
-                      sizey = 0.15,
-                      xanchor="right",
-                      yanchor="bottom")
-                    )
-                  )
 }
