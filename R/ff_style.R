@@ -46,7 +46,7 @@ ff_style <- function(){
     #This sets the text font, size and colour for the axis test, as well as setting the margins and removes lines and ticks. In some cases, axis lines and axis ticks are things we would want to have in the chart - the cookbook shows examples of how to do so.
     axis.title.x = ggplot2::element_text(family=font,
                                        size=14,
-                                       color="#00000c", margin = ggplot2::margin(t = 10, r = 0, b = 0, l = 0)),
+                                       color="#00000c", margin = ggplot2::margin(t = 10, r = 0, b = 15, l = 0)),
     axis.title.y = ggplot2::element_text(family=font,
                                          size=14,
                                          color="#00000c", margin = ggplot2::margin(t = 0, r = 20, b = 0, l = 0)),

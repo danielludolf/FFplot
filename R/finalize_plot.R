@@ -9,10 +9,10 @@ left_align <- function(plot_name, pieces){
 
 create_footer <- function(source_name){
   #Make the footer
-  footer <- grid::grobTree(grid::linesGrob(x = grid::unit(c(0, 1), "npc"), y = grid::unit(1.1, "npc")),
+  footer <- grid::grobTree(# grid::linesGrob(x = grid::unit(c(0, 1), "npc"), y = grid::unit(1.1, "npc")),
                            grid::textGrob(source_name,
-                                          x = 0.004, hjust = 0, gp = grid::gpar(fontsize=16)),
-                           grid::rasterGrob(png::readPNG('https://raw.githubusercontent.com/forsythfuture/FFTemplates/main/inst/rmarkdown/templates/data_request_template/skeleton/logo.png'), x = 0.944))
+                                          x = 0.004, hjust = 0, gp = grid::gpar(fontsize=8)),
+                           grid::rasterGrob(as.raster(magick::image_read('https://raw.githubusercontent.com/forsythfuture/FFTemplates/main/inst/rmarkdown/templates/data_request_template/skeleton/logo.png')), x = 0.944))
   return(footer)
 }
 
@@ -21,7 +21,6 @@ create_footer <- function(source_name){
 #' It will left align your title, subtitle and source, add the Forsyth Futures blocks at the bottom right and save it to your specified location.
 #' @param plot_name The variable name of the plot you have created that you want to format and save
 #' @param source_name The text you want to come after the text 'Source:' in the bottom left hand side of your side
-#' @return (Invisibly) an updated ggplot object.
 
 #' @keywords ff_ggplot
 #' @export
@@ -30,16 +29,14 @@ create_footer <- function(source_name){
 
 ff_ggplot <- function(plot_name, source_name){
 
-  footer <- create_footer(source_name)
+  footer <- create_footer(paste0('Source: ', source_name))
 
   #Draw your left-aligned grid
   plot_left_aligned <- left_align(plot_name, c("subtitle", "title", "caption"))
   plot_grid <- ggpubr::ggarrange(plot_left_aligned, footer,
                                  ncol = 1, nrow = 2,
-                                 heights = c(1, 0.045/(height_pixels/450)))
-  ## Return (invisibly) a copy of the graph. Can be assigned to a
-  ## variable or silently ignored.
-  # invisible(plot_grid)
+                                 heights = c(0.6, 0.045/(550/450)))
+  plot_grid
 }
 
 #' Add Forsyth Futures' theme to plotly chart
