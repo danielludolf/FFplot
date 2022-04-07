@@ -1,14 +1,14 @@
 #' Add Forsyth Futures' theme to ggplot chart
 #'
 #' This function allows you to add the Forsyth Futures' theme to your ggplotgraphics.
-#' @keywords ff_style
+#' @keywords ff_static
 #' @export
 #' @examples
 #' ggplot2::ggplot(mtcars, ggplot2::aes(wt, mpg)) +
 #'  ggplot2::geom_point() +
 #'  ggplot2::labs(title = "Fuel economy declines as weight increases",
 #'                subtitle = "Fuel economy declines as weight increases") +
-#'  ff_style()
+#'  ff_static()
 
 ff_static <- function(){
 
@@ -73,19 +73,17 @@ ff_static <- function(){
   )
 }
 
-
- a <- ggplot2::ggplot(mtcars, ggplot2::aes(wt, mpg)) +
-  ggplot2::geom_point(
-    ggplot2::aes(text = paste0(
-    "wt: ", wt, "<br>",
-    "mpg: ", mpg, "<br>"))
-  ) +
-  ggplot2::labs(title = "Fuel economy declines as weight increases",
-                subtitle = "Fuel economy declines as weight increases")
-   # ff_static()
-
-
-
+#' Add Forsyth Futures' theme to plotly chart
+#'
+#' This function allows you to add the Forsyth Futures' theming to your plotlygraphics.
+#' @keywords ff_interactive
+#' @export
+#' @examples
+#' p <- ggplot2::ggplot(mtcars, ggplot2::aes(wt, mpg)) +
+#'  ggplot2::geom_point() +
+#'  ggplot2::labs(title = "Fuel economy declines as weight increases",
+#'                subtitle = "Fuel economy declines as weight increases") +
+#' ff_interactive(p)
 
 ff_interactive <- function(plot){
 
@@ -93,6 +91,7 @@ ff_interactive <- function(plot){
 
  plotly::ggplotly(plot, tooltip = "text", width = 750, height = 550) %>%
    # remove plotly logo in the top right-hand corner
+   # TODO removed unneeded features on modebar
    plotly::config(displaylogo = FALSE) %>%
    plotly::layout(margin = list(b = 90, t = 100),
                   yaxis = list(title = list(standoff = 20L), ticks = ""),
@@ -113,5 +112,3 @@ ff_interactive <- function(plot){
                     )
                   )
 }
-
-ff_interactive(a)
