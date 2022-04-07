@@ -49,16 +49,18 @@ ff_ggplot <- function(plot_name, source_name){
 #' @export
 #' @examples
 #' p <- ggplot2::ggplot(mtcars, ggplot2::aes(wt, mpg)) +
-#'  ggplot2::geom_point() +
-#'  ggplot2::labs(title = "Fuel economy declines as weight increases",
-#'                subtitle = "Fuel economy declines as weight increases") +
+#'   ggplot2::geom_point(ggplot2::aes(text = paste0(
+#'     "wt: ", wt, "<br>",
+#'     "mpg: ", mpg, "<br>"))) +
+#'   ggplot2::labs(title = "Fuel economy declines as weight increases",
+#'                 subtitle = "Fuel economy declines as weight increases")
 #' ff_ggplotly(p)
 
-ff_ggplotly <- function(plot){
+ff_ggplotly <- function(ggplot_name){
 
   message("Do not use ff_style() before ff_ggplotly()")
 
-  plotly::ggplotly(plot, tooltip = "text", width = 750, height = 550) %>%
+  plotly::ggplotly(ggplot_name, tooltip = "text", width = 750, height = 550) %>%
     # remove plotly logo in the top right-hand corner
     # TODO removed unneeded features on modebar
     plotly::config(displaylogo = FALSE) %>%
@@ -67,6 +69,8 @@ ff_ggplotly <- function(plot){
                    xaxis = list(title = list(standoff = 20L), ticks = ""),
                    font = list(family = "Helvetica"),
                    modebar = list(orientation = "v"),
+                   plot_bgcolor = '#FFFFFF',
+                   paper_bgcolor = '#FFFFFF',
                    images = list(
                      list(
                        source = "https://raw.githubusercontent.com/forsythfuture/FFTemplates/main/inst/rmarkdown/templates/data_request_template/skeleton/logo.png",
@@ -78,6 +82,6 @@ ff_ggplotly <- function(plot){
                        sizey = 0.15,
                        xanchor="right",
                        yanchor="bottom")
-                   )
-    )
+                     )
+                  )
 }
