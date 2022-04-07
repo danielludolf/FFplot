@@ -1,11 +1,4 @@
 
-save_plot <- function (plot_grid, width, height, save_filepath) {
-  grid::grid.draw(plot_grid)
-  #save it
-  ggplot2::ggsave(filename = save_filepath,
-                  plot=plot_grid, width=(width/72), height=(height/72),  bg="white")
-}
-
 #Left align text
 left_align <- function(plot_name, pieces){
   grob <- ggplot2::ggplotGrob(plot_name)
@@ -21,7 +14,6 @@ create_footer <- function(source_name){
                                           x = 0.004, hjust = 0, gp = grid::gpar(fontsize=16)),
                            grid::rasterGrob(png::readPNG('https://raw.githubusercontent.com/forsythfuture/FFTemplates/main/inst/rmarkdown/templates/data_request_template/skeleton/logo.png'), x = 0.944))
   return(footer)
-
 }
 
 #' Arrange alignment and save BBC ggplot chart
@@ -40,19 +32,10 @@ create_footer <- function(source_name){
 #' @keywords finalise_plot
 #' @examples
 #' finalise_plot(plot_name = myplot,
-#' source = "The source for my data",
-#' save_filepath = "filename_that_my_plot_should_be_saved_to-nc.png",
-#' width_pixels = 640,
-#' height_pixels = 450,
-#' logo_image_path = "logo_image_filepath.png"
-#' )
+#' source = "The source for my data")
 #'
 #' @export
-finalise_plot <- function(plot_name,
-                          source_name,
-                          save_filepath=file.path(Sys.getenv("TMPDIR"), "tmp-nc.png"),
-                          width_pixels=640,
-                          height_pixels=450){
+finalise_plot <- function(plot_name, source_name){
 
   footer <- create_footer(source_name)
 
@@ -61,8 +44,6 @@ finalise_plot <- function(plot_name,
   plot_grid <- ggpubr::ggarrange(plot_left_aligned, footer,
                                  ncol = 1, nrow = 2,
                                  heights = c(1, 0.045/(height_pixels/450)))
-  ## print(paste("Saving to", save_filepath))
-  save_plot(plot_grid, width_pixels, height_pixels, save_filepath)
   ## Return (invisibly) a copy of the graph. Can be assigned to a
   ## variable or silently ignored.
   invisible(plot_grid)
