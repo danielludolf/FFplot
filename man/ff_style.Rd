@@ -2,7 +2,7 @@
 % Please edit documentation in R/ff_style.R
 \name{ff_style}
 \alias{ff_style}
-\title{Add Forsyth Futures' theme to ggplot chart}
+\title{Add Forsyth Futures' theme to ggplot graph}
 \usage{
 ff_style()
 }

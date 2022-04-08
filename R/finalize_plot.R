@@ -37,7 +37,7 @@ create_footer <- function(source_name){
 #'   ggplot2::geom_point() +
 #'   ggplot2::labs(title = "Fuel economy declines as weight increases",
 #'                 subtitle = "Fuel economy declines as weight increases")
-#' ff_ggplot(plot_name = p, source = "The source for my data")
+#' ff_ggplot(plot_name = p, source_name = "The source for my data")
 
 ff_ggplot <- function(plot_name, source_name){
 
@@ -73,7 +73,7 @@ ff_ggplot <- function(plot_name, source_name){
 #'   ) +
 #'   ggplot2::labs(title = "Fuel economy declines as weight increases",
 #'                 subtitle = "Fuel economy declines as weight increases")
-#' ff_ggplotly(plot_name = p, source = "The source for my data")
+#' ff_ggplotly(plot_name = p, source_name = "The source for my data")
 
 ff_ggplotly <- function(plot_name, source_name){
 

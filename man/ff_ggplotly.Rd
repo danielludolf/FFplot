@@ -25,6 +25,6 @@ p <- ggplot2::ggplot(mtcars, ggplot2::aes(wt, mpg)) +
   ) +
   ggplot2::labs(title = "Fuel economy declines as weight increases",
                 subtitle = "Fuel economy declines as weight increases")
-ff_ggplotly(plot_name = p, source = "The source for my data")
+ff_ggplotly(plot_name = p, source_name = "The source for my data")
 }
 \keyword{ff_ggplotly}

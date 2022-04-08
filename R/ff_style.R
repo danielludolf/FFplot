@@ -1,4 +1,4 @@
-#' Add Forsyth Futures' theme to ggplot chart
+#' Add Forsyth Futures' theme to ggplot graph
 #'
 #' This function allows you to add the Forsyth Futures' theme to your ggplot graphics.
 #' @keywords ff_style
