@@ -15,4 +15,4 @@ The FFplot package provides Forsyth Futures analysts the ability to create and e
 * `ff_ggplotly` allows you to convert a ggplot graph into an interactive plotly graphic with Forsyth Futures' theming
 * `ff_colors` vector of Forsyth Futures' color palette
 
-For examples and parameter definitions, type '?`ff_style`', '?`ff_ggplot`' or '?`ff_ggplotly`' in the Console after loading the package, i.e., `library(FFTemplates)`.
+For examples and parameter definitions, type '?`ff_style`', '?`ff_ggplot`' or '?`ff_ggplotly`' in the Console after loading the package, i.e., `library(FFplot)`.
