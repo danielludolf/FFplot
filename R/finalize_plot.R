@@ -75,12 +75,12 @@ ff_ggplot <- function(plot_name, source_name){
 #'                 subtitle = "Fuel economy declines as weight increases")
 #' ff_ggplotly(plot_name = p, source_name = "The source for my data")
 
-ff_ggplotly <- function(plot_name, source_name){
+ff_ggplotly <- function(plot_name, source_name, width, height){
 
   message("Do not use ff_style() before ff_ggplotly()")
 
   # TEMP should the user be able to edit the width and height?
-  plotly::ggplotly(plot_name, tooltip = "text", width = 750, height = 550) %>%
+  plotly::ggplotly(plot_name, tooltip = "text", width = width, height = height) %>%
     # remove plotly logo in the top right-hand corner and other unneeded buttons
     plotly::config(displaylogo = FALSE, modeBarButtonsToRemove = c("lasso2d", "zoom2d", "pan2d", "select2d", "hoverClosestCartesian", "hoverCompareCartesian")) %>%
     plotly::layout(margin = list(b = 90, t = 100),
