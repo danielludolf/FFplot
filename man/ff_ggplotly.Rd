@@ -4,12 +4,16 @@
 \alias{ff_ggplotly}
 \title{Create Forsyth Futures' themed plotly graph}
 \usage{
-ff_ggplotly(plot_name, source_name)
+ff_ggplotly(plot_name, source_name, width = 750, height = 550)
 }
 \arguments{
 \item{plot_name}{The object name of the plot you have created that you want to format}
 
 \item{source_name}{The text you want to come after the text 'Source:' in the bottom left hand side of your plot}
+
+\item{width}{Set the width, default is 750.}
+
+\item{height}{Set the height, default is 550.}
 }
 \description{
 This function allows you to convert a ggplot graph into an interactive plotly graphic with Forsyth Futures' theming.
@@ -25,6 +29,6 @@ p <- ggplot2::ggplot(mtcars, ggplot2::aes(wt, mpg)) +
   ) +
   ggplot2::labs(title = "Fuel economy declines as weight increases",
                 subtitle = "Fuel economy declines as weight increases")
-ff_ggplotly(plot_name = p, source_name = "The source for my data")
+ff_ggplotly(plot_name = p, source_name = "The source for my data", width = 750, height = 550)
 }
 \keyword{ff_ggplotly}

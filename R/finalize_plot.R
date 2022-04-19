@@ -58,6 +58,8 @@ ff_ggplot <- function(plot_name, source_name){
 #' This function allows you to convert a ggplot graph into an interactive plotly graphic with Forsyth Futures' theming.
 #' @param plot_name The object name of the plot you have created that you want to format
 #' @param source_name The text you want to come after the text 'Source:' in the bottom left hand side of your plot
+#' @param width Set the width, default is 750.
+#' @param height Set the height, default is 550.
 
 #' @keywords ff_ggplotly
 #' @export
@@ -73,9 +75,9 @@ ff_ggplot <- function(plot_name, source_name){
 #'   ) +
 #'   ggplot2::labs(title = "Fuel economy declines as weight increases",
 #'                 subtitle = "Fuel economy declines as weight increases")
-#' ff_ggplotly(plot_name = p, source_name = "The source for my data")
+#' ff_ggplotly(plot_name = p, source_name = "The source for my data", width = 750, height = 550)
 
-ff_ggplotly <- function(plot_name, source_name, width, height){
+ff_ggplotly <- function(plot_name, source_name, width = 750, height = 550){
 
   message("Do not use ff_style() before ff_ggplotly()")
 
