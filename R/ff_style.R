@@ -27,7 +27,10 @@ ff_style <- function(){
     plot.subtitle = ggplot2::element_text(family=font,
                                           size=16,
                                           margin=ggplot2::margin(5, 0, 25, 0)),
-    plot.caption = ggplot2::element_blank(),
+    plot.caption = ggplot2::element_text(family=font,
+                                         size=12,
+                                         hjust=0,
+                                         margin=ggplot2::margin(0, 0, 0, 0)),
     #This leaves the caption text element empty, because it is set elsewhere in the finalise plot function
 
     #Legend format
