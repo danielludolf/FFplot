@@ -85,7 +85,7 @@ ff_ggplotly <- function(plot_name, source_name, width = 750, height = 550){
   plotly::ggplotly(plot_name, tooltip = "text", width = width, height = height) %>%
     # remove plotly logo in the top right-hand corner and other unneeded buttons
     plotly::config(displaylogo = FALSE, modeBarButtonsToRemove = c("lasso2d", "zoom2d", "pan2d", "select2d", "hoverClosestCartesian", "hoverCompareCartesian")) %>%
-    plotly::layout(margin = list(b = 90, t = 100),
+    plotly::layout(margin = list(b = 90, t = 0),
                    yaxis = list(title = list(standoff = 20L), ticks = ""),
                    xaxis = list(title = list(standoff = 20L), ticks = ""),
                    font = list(family = "Helvetica"),
