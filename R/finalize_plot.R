@@ -19,7 +19,7 @@ create_footer <- function(source_name){
                                           gp = grid::gpar(fontsize=8)),
                            # adds Forsyth Futures logo in the bottom right
                            grid::rasterGrob(as.raster(magick::image_read('https://raw.githubusercontent.com/forsythfuture/FFTemplates/main/inst/rmarkdown/templates/data_request_template/skeleton/logo.png')),
-                                            x = 0.944)
+                                            x = 0.9)
                            )
   return(footer)
 }
